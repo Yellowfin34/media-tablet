@@ -1,0 +1,341 @@
+title: Home
+views:
+  - theme: Backend-selected
+    path: default_view
+    title: Home
+    icon: mdi:home
+    type: custom:grid-layout
+    layout:
+      grid-template-columns: 1fr 1fr 1fr
+      grid-template-rows: auto
+      grid-template-areas: |
+        "sidebar main main"
+      mediaquery:
+        (max-width:1920px):
+          grid-template-columns: 100%
+          grid-template-areas: |
+            "sidebar"
+            "main"
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            layout:
+              margin: 0
+              gap: 0
+              grid-template-columns: 1fr 1fr
+              mediaquery:
+                '(max-width: 600px)':
+                  grid-template-columns: 100%
+            cards:
+              - type: custom:mini-media-player
+                name: Apple TV
+                entity: media_player.appletvserver
+                artwork: full-cover
+                hide:
+                  power: true
+                  volume: true
+                  source: true
+                  controls: false
+                shortcuts:
+                  columns: 4
+                  buttons:
+                    - icon: mdi:play
+                      type: service
+                      id: media_player.media_play
+                      data:
+                        entity_id: media_player.appletvserver
+                    - icon: mdi:pause
+                      type: service
+                      id: media_player.media_pause
+                      data:
+                        entity_id: media_player.appletvserver
+                    - icon: mdi:fast-forward
+                      type: service
+                      id: media_player.media_next_track
+                      data:
+                        entity_id: media_player.appletvserver
+                    - icon: mdi:rewind
+                      type: service
+                      id: media_player.media_previous_track
+                      data:
+                        entity_id: media_player.appletvserver
+              - type: custom:mini-media-player
+                name: Fire TV
+                entity: media_player.server_fire_tv
+                artwork: full-cover
+                hide:
+                  power: true
+                  volume: true
+                  source: true
+                  controls: false
+                shortcuts:
+                  columns: 4
+                  buttons:
+                    - icon: mdi:play
+                      type: service
+                      id: media_player.media_play
+                      data:
+                        entity_id: media_player.server_fire_tv
+                    - icon: mdi:pause
+                      type: service
+                      id: media_player.media_pause
+                      data:
+                        entity_id: media_player.server_fire_tv
+                    - icon: mdi:fast-forward
+                      type: service
+                      id: media_player.media_next_track
+                      data:
+                        entity_id: media_player.server_fire_tv
+                    - icon: mdi:rewind
+                      type: service
+                      id: media_player.media_previous_track
+                      data:
+                        entity_id: media_player.server_fire_tv
+          - type: vertical-stack
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mini-graph-card
+                    card_mod:
+                      style: |
+                        ha-card { padding: 0 !important; }
+                    entities:
+                      - entity: sensor.kid_s_room_temperature
+                        name: Samantha's Temperature
+                  - type: custom:mini-graph-card
+                    card_mod:
+                      style: |
+                        ha-card { padding: 0 !important; }
+                    entities:
+                      - entity: sensor.familyroomthermostat_temperature
+                        name: Family Room Temp
+          - type: horizontal-stack
+            cards:
+              - camera_view: live
+                type: picture-glance
+                title: ' '
+                entities: []
+                camera_image: camera.doorbell_frigate
+                aspect_ratio: '16:9'
+                entity: camera.doorbell_frigate
+              - camera_view: live
+                type: picture-glance
+                title: ' '
+                entities: []
+                camera_image: camera.culdesac_frigate
+                aspect_ratio: '16:9'
+                entity: camera.culdesac_frigated
+              - camera_view: live
+                type: picture-glance
+                title: ' '
+                entities: []
+                camera_image: camera.pool_frigate
+                aspect_ratio: '16:9'
+                entity: camera.pool_frigate
+          - square: false
+            columns: 6
+            type: grid
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.chandelierfront
+                name: Chandelier
+                icon: mdi:chandelier
+                show_state: true
+                icon_height: 30px
+                card_mod:
+                  style: |
+                    ha-card { padding: 6% 0 !important; }
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.stairslight
+                name: Stairs
+                icon: mdi:stairs
+                show_state: true
+                icon_height: 30px
+                card_mod:
+                  style: |
+                    ha-card { padding: 6% 0 !important; }
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                name: Upstairs Hall
+                icon: mdi:dome-light
+                show_state: true
+                entity: light.upstairs_hall_far_light_group
+                icon_height: 30px
+                card_mod:
+                  style: |
+                    ha-card { padding: 6% 0 !important; }
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.pineapple_light_group
+                name: Pineapple
+                icon: mdi:globe-light
+                show_state: true
+                icon_height: 30px
+                card_mod:
+                  style: |
+                    ha-card { padding: 6% 0 !important; }
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.living_room_group
+                icon: mdi:ceiling-fan-light
+                name: Living Room
+                show_state: true
+                icon_height: 30px
+                card_mod:
+                  style: |
+                    ha-card { padding: 6% 0 !important; }
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.kitchenlights
+                show_state: true
+                icon_height: 30px
+                icon: mdi:knife
+                card_mod:
+                  style: |
+                    ha-card { padding: 6% 0 !important; }
+          - square: false
+            columns: 6
+            type: grid
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.chandelierfront
+                name: Chandelier
+                icon: mdi:chandelier
+                show_state: true
+                icon_height: 30px
+                card_mod:
+                  style: |
+                    ha-card { padding: 6% 0 !important; }
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.stairslight
+                name: Stairs
+                icon: mdi:stairs
+                show_state: true
+                icon_height: 30px
+                card_mod:
+                  style: |
+                    ha-card { padding: 6% 0 !important; }
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                name: Upstairs Hall
+                icon: mdi:dome-light
+                show_state: true
+                entity: light.upstairs_hall_far_light_group
+                icon_height: 30px
+                card_mod:
+                  style: |
+                    ha-card { padding: 6% 0 !important; }
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.pineapple_light_group
+                name: Pineapple
+                icon: mdi:globe-light
+                show_state: true
+                icon_height: 30px
+                card_mod:
+                  style: |
+                    ha-card { padding: 6% 0 !important; }
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.living_room_group
+                icon: mdi:ceiling-fan-light
+                name: Living Room
+                show_state: true
+                icon_height: 30px
+                card_mod:
+                  style: |
+                    ha-card { padding: 6% 0 !important; }
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.kitchenlights
+                show_state: true
+                icon_height: 30px
+                icon: mdi:knife
+                card_mod:
+                  style: |
+                    ha-card { padding: 6% 0 !important; }
+        view_layout:
+          grid-area: main
+      - type: vertical-stack
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: custom:clock-weather-card
+                entity: weather.home
+                sun_entity: sun.sun
+                weather_icon_type: line
+                animated_icon: true
+                forecast_days: 3
+                locale: en-US
+                time_format: 24
+                hide_today_section: false
+                hide_forecast_section: false
+                hide_clock: false
+                hide_date: false
+              - type: custom:simple-thermostat
+                entity: climate.home
+                step_size: 1
+                layout:
+                  step: row
+                  sensors:
+                    labels: null
+                  mode:
+                    names: true
+                    headings: false
+                hide:
+                  state: true
+                card_mod:
+                  style: |
+                    .current-wrapper {
+                      flex-wrap: nowrap !important;  
+                    }
+                    .modes {
+                      padding: 0;
+                    }
+                    ha-card {
+                      padding-bottom: 0 !important;
+                    }
+        view_layout:
+          grid-area: sidebar
